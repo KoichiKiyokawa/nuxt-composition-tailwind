@@ -7,5 +7,9 @@ services:
     volumes:
       - .:/app
     command: yarn dev
+    environment:
+      - NUXT_HOST=0.0.0.0
     ports: 
       - 3000:3000
+    # root権限でファイルが作られるのを防ぐ
+    user: '${UID}:${GID}'
