@@ -1,24 +1,27 @@
 <template lang="pug">
-div
-  p {{count}}
-  button.bg-blue-500.text-white.font-bold.py-2.px-4.rounded(@click="click")
+.text-center
+  p.text-lg {{count}}
+  button.btn.bg-blue-500(@click="increment")
     | +1
+  button.btn.bg-red-500.ml-2(@click="decrement")
+    | -1
 </template>
 
 <script lang="ts">
-import { defineComponent, ref } from '@nuxtjs/composition-api'
+import { defineComponent } from '@nuxtjs/composition-api'
+
+import { useCounter } from '@/compositions/counter'
 
 export default defineComponent({
   setup() {
-    const count = ref(0)
-    const click = () => {
-      count.value++
-    }
-
     return {
-      count,
-      click,
+      ...useCounter(),
     }
   },
 })
 </script>
+
+<style lang="sass" scoped>
+.btn
+  @apply text-white font-bold py-2 px-4 rounded
+</style>
