@@ -1,8 +1,19 @@
 <template lang="pug">
-div
-  nav.flex.items-center.flex-wrap.bg-teal-500.p-4.pl-6
-    nuxt-link.text-xl.text-white(to="/") Nuxt+CompositionAPI+TailwindCSS
-    nuxt-link.text-gray-300.ml-4(to="/counter") counter
-  .container.mx-auto
-    Nuxt
+.flex
+  Sidebar
+  main.flex-grow
+    Header
+    .container.mx-auto
+      Nuxt
 </template>
+
+<script lang="ts">
+import { defineComponent } from '@nuxtjs/composition-api'
+
+import Header from '@/components/organisms/Header.vue'
+import Sidebar from '@/components/organisms/Sidebar.vue'
+
+export default defineComponent({
+  components: { Header, Sidebar },
+})
+</script>
